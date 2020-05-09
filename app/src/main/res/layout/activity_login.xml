@@ -10,10 +10,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is Intro Screen" />
+        android:text="This is Login Screen" />
 
     <Button
-        android:id="@+id/intro_btn_next"
+        android:id="@+id/login_btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
