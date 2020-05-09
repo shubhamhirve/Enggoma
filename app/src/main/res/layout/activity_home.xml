@@ -52,7 +52,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="25dp"
                 android:background="@drawable/round_border"
                 android:elevation="2dp">
 
@@ -62,35 +62,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/round_border"
-                android:elevation="2dp">
-
-            </View>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:background="#FFEB3B"
-            android:gravity="center_horizontal">
-
-            <View
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/round_border"
-                android:elevation="2dp">
-
-            </View>
-
-            <View
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
                 android:background="@drawable/round_border"
                 android:elevation="2dp">
 
@@ -108,7 +80,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="25dp"
                 android:background="@drawable/round_border"
                 android:elevation="2dp">
 
@@ -118,7 +90,35 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/round_border"
+                android:elevation="2dp">
+
+            </View>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="#FFEB3B"
+            android:gravity="center_horizontal">
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/round_border"
+                android:elevation="2dp">
+
+            </View>
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="25dp"
                 android:background="@drawable/round_border"
                 android:elevation="2dp">
 
