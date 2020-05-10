@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <LinearLayout
@@ -9,7 +10,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.8"
         android:gravity="center"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <TextView
@@ -39,7 +39,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.3"
         android:gravity="center"
-        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <LinearLayout
@@ -49,6 +48,7 @@
             android:gravity="center_horizontal">
 
             <View
+                android:id="@+id/notes"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -59,6 +59,7 @@
             </View>
 
             <View
+                android:id="@+id/questions"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -77,6 +78,7 @@
             android:gravity="center_horizontal">
 
             <View
+                android:id="@+id/question_papers"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -87,6 +89,7 @@
             </View>
 
             <View
+                android:id="@+id/answer_sheets"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -105,6 +108,7 @@
             android:gravity="center_horizontal">
 
             <View
+                android:id="@+id/concepts"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
@@ -115,6 +119,7 @@
             </View>
 
             <View
+                android:id="@+id/aboutus"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_gravity="center"

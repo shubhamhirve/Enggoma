@@ -18,6 +18,7 @@
         <activity android:name=".IntroActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".SelectActivity" />
     </application>
 
 </manifest>
