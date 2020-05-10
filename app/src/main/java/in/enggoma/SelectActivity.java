@@ -61,7 +61,7 @@ public class SelectActivity extends AppCompatActivity {
         semester.setDropDownHintView(getHintView());
         subject.setDropDownHintView(getHintView());
 
-        ////TODO verify code again. after click spinner not dismiss.
+        ////TODO verify code again. after click spinner not dismiss. or change to regular spinner
 
         stream.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
