@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "783399951360",
+    "firebase_url": "https://enggoma-63aa9.firebaseio.com",
+    "project_id": "enggoma-63aa9",
+    "storage_bucket": "enggoma-63aa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783399951360:android:5325401b949fa2e3d9cce5",
+        "android_client_info": {
+          "package_name": "in.enggoma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783399951360-ck79519fl8ekhp81eqjlasl92oqtdvp0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.enggoma",
+            "certificate_hash": "ddb428d17a4d9cdb5b27ec95b4315a2ceb78256b"
+          }
+        },
+        {
+          "client_id": "783399951360-752euib7opc6lfrtp7nadf3g16fa72rl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWsUYvjFhdMlmjf3v6ccIOcP9U8iarJeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783399951360-752euib7opc6lfrtp7nadf3g16fa72rl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

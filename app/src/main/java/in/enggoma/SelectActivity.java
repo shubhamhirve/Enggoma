@@ -57,6 +57,7 @@ public class SelectActivity extends AppCompatActivity {
         subject.setAdapter(adapter_subject);
 
 
+
         stream.setDropDownHintView(getHintView());
         semester.setDropDownHintView(getHintView());
         subject.setDropDownHintView(getHintView());
@@ -118,6 +119,7 @@ public class SelectActivity extends AppCompatActivity {
         hintView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         title.setTextSize(TypedValue.COMPLEX_UNIT_PX, label_text_size);
         ((RelativeLayout.LayoutParams) back.getLayoutParams()).setMargins(margins, 0, margins, 0);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
