@@ -1,9 +1,11 @@
 package in.enggoma;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class SelectActivity extends AppCompatActivity {
     FloatingLabelSpinner stream, semester, subject;
     MaterialAdapter adapter_stream, adapter_semester, adapter_subject;
     List<String> dataset_stream, dataset_semester, dataset_subject;
+    Button SubmitButton;
     SQuery query;
     private int current_node = 0;
 
@@ -40,6 +43,7 @@ public class SelectActivity extends AppCompatActivity {
         stream = (FloatingLabelSpinner) findViewById(R.id.spinner_stream);
         semester = (FloatingLabelSpinner) findViewById(R.id.spinner_semester);
         subject = (FloatingLabelSpinner) findViewById(R.id.spinner_subject);
+        SubmitButton = findViewById(R.id.btn_submit);
         query = new SQuery();
 
         dataset_stream = new ArrayList<>(Arrays.asList("Computer Engineering", "Computer Technology", "Information Technology", "Electronics & Telecommunication"));
@@ -56,6 +60,8 @@ public class SelectActivity extends AppCompatActivity {
         semester.setAdapter(adapter_semester);
         subject.setAdapter(adapter_subject);
 
+
+        SubmitButton.setOnClickListener(view -> startActivity(new Intent(this,PdfViewActivity.class))) ;
 
 
         stream.setDropDownHintView(getHintView());
