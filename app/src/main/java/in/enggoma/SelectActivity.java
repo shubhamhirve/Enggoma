@@ -61,7 +61,7 @@ public class SelectActivity extends AppCompatActivity {
         subject.setAdapter(adapter_subject);
 
 
-        SubmitButton.setOnClickListener(view -> startActivity(new Intent(this,PdfViewActivity.class))) ;
+        SubmitButton.setOnClickListener(view -> startActivity(new Intent(this,PdfViewActivity.class)))  ;
 
 
         stream.setDropDownHintView(getHintView());
