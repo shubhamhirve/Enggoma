@@ -8,13 +8,11 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class SoleInstance  {
 
-
-
-
-    public static final String BASE_URL_SERVER = " http://13.235.240.118/equinox/public/";
+    public static final String BASE_URL_SERVER = "https://www.google.com/";
 
 
     private static volatile OkHttpClient okHttpClientInstance = null;
@@ -36,14 +34,9 @@ public class SoleInstance  {
             throw new RuntimeException("Can not create this way, please use getRetrofitInstance method");
         } else if (apiServiceInstance != null) {
             throw new RuntimeException("Can not create this way, please use getApiServiceInstance method");
-        } /*else if (picassoInstance != null) {
-            throw new RuntimeException("Can not create this way, please use getPicassoInstance method");
-        } else if (appDatabase != null) {
-            throw new RuntimeException("Can not create this way, please use getAppDatabase method");
-        }*/
+        }
     }
-    //   private static volatile Picasso picassoInstance = null;
-    //  private static volatile AppDataBase appDatabase = null;
+
 
     public static ApiService getApiServiceInstance() {
         if (apiServiceInstance == null) {
@@ -64,7 +57,7 @@ public class SoleInstance  {
                             .baseUrl(BASE_URL_SERVER)
                             .addConverterFactory(GsonConverterFactory.create(getGsonInstance()))
                             .client(getOkHttpClientInstance())
-                            //TODO change RxJava2CallAdapterFactory.create to method
+                            .addConverterFactory(ScalarsConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .build();
                 }

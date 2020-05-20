@@ -4,16 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.net.Uri;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.github.barteksc.pdfviewer.listener.OnErrorListener;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
-import com.preference.PowerPreference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,6 +39,9 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
     private String Url;
     private String   downloadedUri;
     Integer pageNumber = 0;
+    private ProgressDialog progress;
+
+
 
 
     @Override
@@ -44,22 +49,21 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_pdf_view);
         context = this;
-        Url = "https://www.mohfw.gov.in/pdf/ProtectivemeasuresEng.pdf";
+        Url = "https://firebasestorage.googleapis.com/v0/b/enggoma-63aa9.appspot.com/o/myfile-protected.pdf?alt=media&token=dbf28ecb-bfed-49c9-a4d7-828e8812327c";
         
 
 
         String mfilename= Url.substring( Url.lastIndexOf('/')+1, Url.length() );
 
+        progress = new ProgressDialog(context);
+        progress = ProgressDialog.show(context, "Enggoma", "Please wait while Loading...", false, false);
+        progress.setCancelable(false);
+        progress.setCanceledOnTouchOutside(false);
+        progress.show();
+
 
         checkFile(Url,mfilename);
 
-
-     //   download(Url,mfilename);
-
-
-
-        //   binding.pdfView.fromUri(Uri.parse("https://www.mohfw.gov.in/pdf/ProtectivemeasuresEng.pdf"));
-        
         
         
 
@@ -71,19 +75,10 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
 
         if(myfile.exists())
         {
-            binding.pdfView.fromFile(myfile)
-                    .defaultPage(pageNumber)
-                    .onPageChange(PdfViewActivity.this::onPageChanged)
-                    .enableAnnotationRendering(true)
-                    .scrollHandle(new DefaultScrollHandle(context))
-                    .spacing(10)
-                    .load();
+           setPdf(filename);
         }else
         {
             download(url,filename);
-
-
-
         }
 
     }
@@ -114,17 +109,13 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
                                 super.onPostExecute(s);
                                 if(downloadedUri!=null)
                                 {
-
-
-                                    File file = new File(context.getExternalFilesDir(null)
-                                            + File.separator + filename);
-                                    binding.pdfView.fromFile(file)
-                                            .defaultPage(pageNumber)
-                                            .onPageChange(PdfViewActivity.this::onPageChanged)
-                                            .enableAnnotationRendering(true)
-                                            .scrollHandle(new DefaultScrollHandle(context))
-                                            .spacing(10)
-                                            .load();
+                                    setPdf(filename);
+                                }else
+                                {
+                                    if(progress !=null && progress.isShowing())
+                                    {
+                                        progress.dismiss();
+                                    }
                                 }
 
                             }
@@ -134,11 +125,51 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    if(progress !=null && progress.isShowing())
+                    {
+                        progress.dismiss();
+                    }
                     Toast.makeText(context, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
 
+
+
+    }
+
+    private void setPdf(String filename) {
+
+
+        File file = new File(context.getExternalFilesDir(null)
+                + File.separator + filename);
+        binding.pdfView.fromFile(file)
+                .defaultPage(pageNumber)
+                .password("qwertyuiop")
+                .onPageChange(PdfViewActivity.this::onPageChanged)
+                .enableAnnotationRendering(true)
+                .scrollHandle(new DefaultScrollHandle(context))
+                .spacing(10)
+                .load();
+
+
+        binding.pdfView.fromFile(file).onLoad(new OnLoadCompleteListener() {
+            @Override
+            public void loadComplete(int nbPages) {
+                Toast.makeText(context, "loaded", Toast.LENGTH_SHORT).show();
+            }
+        }).onError(new OnErrorListener() {
+            @Override
+            public void onError(Throwable t) {
+                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        if(progress !=null && progress.isShowing())
+        {
+            progress.dismiss();
+        }
 
 
     }
@@ -184,6 +215,10 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
                 return "" + filePath;
             } catch (IOException e) {
                 Log.d("file", "writeResponseBodyToDisk: " + e.getMessage());
+                if(progress !=null && progress.isShowing())
+                {
+                    progress.dismiss();
+                }
                 return "" + e.getMessage();
             } finally {
                 if (inputStream != null) {
@@ -196,6 +231,10 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
             }
         } catch (IOException e) {
             Log.d("file", "writeResponseBodyToDisk: " + e.getMessage());
+            if(progress !=null && progress.isShowing())
+            {
+                progress.dismiss();
+            }
             return "" + e.getMessage();
         }
     }
